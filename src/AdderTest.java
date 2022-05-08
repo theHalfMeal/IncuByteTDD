@@ -11,4 +11,12 @@ public class AdderTest {
 		int expectedResult = 0;
 		assertEquals(expectedResult, actualResult);
 	}
+	
+	@Test
+	public void should_return_sum_if_single_value_is_present() {
+		Adder adder = new Adder();
+		int actualResult = adder.Add("1");
+		int expectedResult = 1;
+		assertEquals(expectedResult, actualResult);
+	}
 }
