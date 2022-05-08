@@ -54,4 +54,14 @@ public class AdderTest {
 		int expectedResult = 6;
 		assertEquals(expectedResult, actualResult);
 	}
+	
+	@Test()
+	public void should_throw_error_if_negative_value() {
+		Exception exception = assertThrows(Exception.class, () -> {
+			new Adder().Add("-1");
+		});
+		String expectedMessage = "negatives not allowed";
+		String actualMessage = exception.getMessage();
+		assertEquals(expectedMessage, actualMessage);
+	} 
 }
