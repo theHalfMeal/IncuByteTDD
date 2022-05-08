@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Adder {
 	
@@ -16,15 +18,28 @@ public class Adder {
 			}
 			numbers = numbers.replace("\n", delimiter);
 		}
+		return getSum(numbers, delimiter);
+	}
+	
+	public int getSum(String numbers, String delimiter) throws Exception {
 		int sum = 0;
 		String[] tokens = numbers.split(delimiter);
+		ArrayList<Integer> negativeNumbers = new ArrayList<>(); 
 		for(String token : tokens) {
 			int number = Integer.parseInt(token);
 			if(number < 0) {
-				throw new Exception("negatives not allowed");
+				negativeNumbers.add(number);
 			}
 			sum += number;
 		}
-		return sum;
+		if(negativeNumbers.size() == 0) {
+			return sum;
+		} else if(negativeNumbers.size() == 1) {
+			throw new Exception("negatives not allowed");
+		} else {
+			String listString = negativeNumbers.stream().map(Object::toString)
+                    .collect(Collectors.joining(","));
+			throw new Exception("negatives not allowed:" + listString);
+		}
 	}
 }
