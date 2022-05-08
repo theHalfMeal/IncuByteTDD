@@ -46,4 +46,12 @@ public class AdderTest {
 		String actualMessage = exception.getMessage();
 		assertEquals(expectedMessage, actualMessage);
 	}
+	
+	@Test
+	public void should_return_sum_in_case_of_delimiters() throws Exception {
+		Adder adder = new Adder();
+		int actualResult = adder.Add("//;\n1;2;3");
+		int expectedResult = 6;
+		assertEquals(expectedResult, actualResult);
+	}
 }
