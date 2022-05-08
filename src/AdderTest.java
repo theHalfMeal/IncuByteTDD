@@ -32,7 +32,7 @@ public class AdderTest {
 	public void should_return_sum_if_new_lines_are_present() {
 		Adder adder = new Adder();
 		int actualResult = adder.Add("1\n2,3");
-		int expectedResult = 1;
+		int expectedResult = 6;
 		assertEquals(expectedResult, actualResult);
 	}
 }
