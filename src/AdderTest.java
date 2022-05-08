@@ -1,5 +1,6 @@
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
 public class AdderTest {
@@ -34,5 +35,15 @@ public class AdderTest {
 		int actualResult = adder.Add("1\n2,3");
 		int expectedResult = 6;
 		assertEquals(expectedResult, actualResult);
+	}
+	
+	@Test
+	public void should_throw_error_if_no_value_after_new_line() {
+		Exception exception = assertThrows(Exception.class, () -> {
+			new Adder().Add("1,\n");
+		});
+		String expectedMessage = "Please enter values after new line";
+		String actualMessage = exception.getMessage();
+		assertTrue(actualMessage.contains(expectedMessage));
 	}
 }
