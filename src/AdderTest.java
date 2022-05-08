@@ -19,4 +19,20 @@ public class AdderTest {
 		int expectedResult = 1;
 		assertEquals(expectedResult, actualResult);
 	}
+	
+	@Test
+	public void should_return_sum_if_multiple_values_are_present() {
+		Adder adder = new Adder();
+		int actualResult = adder.Add("1,2,3");
+		int expectedResult = 6;
+		assertEquals(expectedResult, actualResult);
+	}
+	
+	@Test
+	public void should_return_sum_if_new_lines_are_present() {
+		Adder adder = new Adder();
+		int actualResult = adder.Add("1\n2,3");
+		int expectedResult = 1;
+		assertEquals(expectedResult, actualResult);
+	}
 }
