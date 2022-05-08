@@ -19,7 +19,11 @@ public class Adder {
 		int sum = 0;
 		String[] tokens = numbers.split(delimiter);
 		for(String token : tokens) {
-			sum += Integer.parseInt(token);
+			int number = Integer.parseInt(token);
+			if(number < 0) {
+				throw new Exception("negatives not allowed");
+			}
+			sum += number;
 		}
 		return sum;
 	}
